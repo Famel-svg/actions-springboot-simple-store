@@ -35,12 +35,12 @@ curl http://localhost:8080/users
 
 | Job | Descrição | Gatilho |
 |---|---|---|
-| 🔨 **Build** | `mvn clean package -DskipTests` | Push em qualquer branch |
-| 🧪 **Test** | `mvn test` com perfil H2 in-memory | Após Build |
-| 🐳 **Docker → GHCR** | Build da imagem + push para `ghcr.io` | Push na `main` |
-| 🚀 **Deploy Staging** | Deploy no namespace `staging` do K8s | Após push da imagem |
-| ✅ **Aprovação Manual** | Gate configurado no Environment `production` | Automático |
-| 🏭 **Deploy Production** | Deploy no namespace `production` do K8s | Após aprovação |
+| **Build** | `mvn clean package -DskipTests` | Push em `main`/`develop` e PR para `main` |
+|  **Test** | `mvn test` com perfil H2 in-memory | Após Build |
+|  **Docker → GHCR** | Build da imagem + push para `ghcr.io` | Push na `main` |
+| **Deploy Staging** | Simulado: imprime os passos `kubectl` do namespace `staging` (não executa) | Após push da imagem |
+|  **Aprovação Manual** | Gate configurado no Environment `production` | Automático |
+| **Deploy Production** | Simulado: imprime os passos `kubectl` do namespace `production` (não executa) | Após aprovação |
 
 ### Configurar aprovação manual
 
@@ -107,17 +107,17 @@ AKS / Cluster K8s
 
 | Item | Status |
 |---|---|
-| Projeto em .ZIP com estrutura organizada | ✅ |
-| Dockerfile funcional (multi-stage) | ✅ |
-| Compose.yaml para execução local | ✅ |
-| Manifests Kubernetes (`kubernetes/`) | ✅ |
-| Pipeline com build, test e deploy | ✅ |
-| Deploy em staging e production | ✅ |
-| README com instruções e prints | ✅ |
+| Projeto em .ZIP com estrutura organizada | OK |
+| Dockerfile funcional (multi-stage) | OK |
+| Compose.yaml para execução local | OK |
+| Manifests Kubernetes (`kubernetes/`) | OK |
+| Pipeline com build, test e deploy | OK |
+| Deploy em staging e production | OK |
+| README com instruções e prints | OK |
 | Documentação técnica (PDF/PPT) | ☐ |
 
 ---
 
 <div align="center">
-  <strong>Desenvolvido por Famel-svg 🚀</strong>
+  <strong>Desenvolvido por Famel-svg</strong>
 </div>

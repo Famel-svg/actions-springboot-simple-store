@@ -3,6 +3,10 @@
 # ─────────────────────────────────────────────
 FROM maven:3.9.12-eclipse-temurin-21 AS builder
 
+# A imagem oficial define MAVEN_CONFIG=/root/.m2, que o mvnw repassa ao Maven
+# como fase de lifecycle. Limpar a variável evita o erro "Unknown lifecycle phase".
+ENV MAVEN_CONFIG=
+
 WORKDIR /app
 COPY pom.xml .
 COPY .mvn .mvn
